@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}hua_hua{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li class="active">在线预约</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="ortxt" style="margin-bottom:20px">
+            请仔细填写好下方预约表格，我们的客服人员会在24小时内与您联系，<br>
+            谢谢您的支持与关注！
+
+        </div>
+        <div class="yylistdiv">
+            <a href="{% url 'travel:order_list'%}">
+                <span class="yylist">查看我的预约列表</span>
+            </a>
+        </div>
+        <form action="add" method="post" >
+            <div class="obody">
+                <div class="ortit">预约时间</div>
+                <input type="date" class="tstyle" name="otime">
+            </div>
+            <div class="obody">
+                <div class="ortit">预约人数</div>
+                <input type="text" class="tstyle" name="omemnum">
+            </div>
+            <div class="obody">
+                <div class="ortit">景区名称</div>
+                <input type="text" class="tstyle" name="sname">
+            </div>
+            <div class="obody">
+                <div class="ortit">联系人</div>
+                <input type="text" class="tstyle" name="oname">
+            </div>
+            <div class="obody">
+                <div class="ortit">联系电话</div>
+                <input type="text" class="tstyle" name="ophone">
+            </div>
+
+            <div class="obody">
+                <div class="ortit">备注</div>
+                <input type="text" class="tstyle" name="oremark" style="height:100px;border:1px solid #ccc;">
+            </div>
+
+            <div class="obody">
+                <div class="ortit">总价格</div>
+                <input type="text" class="tstyle" name="totalprice">
+            </div>
+            <p class="error company-tips" id="jsCompanyTips"></p>
+            <input type="submit" class="btnt" id="jsStayBtn" value="提交">
+            {% csrf_token %}
+        </form>
+    </div>
+
+
+{% endblock %}
+{% block custom_js %}
+{% endblock %}

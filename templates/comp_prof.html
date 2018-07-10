@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}hua_hua{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li class="active">公司简介</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<div class="comp_infod">
+<p class="comp_info">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;某xxxx国际旅行社有限公司成为一类国际旅游社，主营国内地接、入境接待国内出游、国际出境游、代办签证、修学旅行、商务考察、会务接待等业务项目，公司经营场所400平方米，在职职工100人，设有管理中心、财务中心、国内地接中心、国内出游中心、国际入境中心、中国公民出境中心、网络信息中心等。企业 规模和经济实力以及经济效益已在xx市同行业排序前列。
+<p class="comp_info">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司成立以来，注重质量和信誉，强化内部管理，现已获得良好的品牌效应，诚信服务，规范经营，获得xx市政府多次嘉奖，为xx旅游业争得了荣誉，得到了xx市民和社会各界的好评和认可，在全国旅游界引起了强烈的反响和好评
+</p>
+<p class="comp_info">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司经营场所400平方米，在职职工100人，设有管理中心、财务中心、国内地接中心、国内出游中心、国际入境中心、中国公民出境中心、网络信息中心等。企业规模和经济实力以及经济效益已在xx市同行业排序前列。
+</p>
+</div>
+{% endblock %}
+{% block custom_js %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}huahua_首页{% endblock %}
+
+{% block custom_bread %}
+{% endblock %}
+
+{% block content %}
+    <div class="banner">
+			<div class="wp">
+				<div class="fl">
+					<div class="imgslide">
+						<ul class="imgs">
+                            {% for banner in all_banners %}
+                            <li>
+
+
+									<img width="1200" height="478" src="{{ MEDIA_URL }}{{ banner.image }}" />
+
+							</li>
+                            {% endfor %}
+						</ul>
+					</div>
+					<div class="unslider-arrow prev"></div>
+					<div class="unslider-arrow next"></div>
+				</div>
+			</div>
+	</div>
+<!--banner end-->
+
+<!--module1 start-->
+
+
+{% endblock %}
+{% block custom_js %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+

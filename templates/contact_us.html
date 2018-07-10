@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}hua_hua{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li class="active">联系我们</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<div class="contact_us">
+<table border="0" class="contact_t">
+  <tr class="contact_tr">
+    <th class="contact_th">地址：上海市xx区xx路xx广场x号楼xx号</th>
+  </tr>
+  <tr class="contact_tr">
+    <th class="contact_th">邮政编码：20000</th>
+  </tr>
+  <tr class="contact_tr">
+    <th class="contact_th">公司邮箱：moumou@xxxxx.com</th>
+  </tr>
+  <tr>
+    <th class="contact_th">公司传真：021-123456x8</th>
+  </tr>
+  <tr>
+    <th class="contact_th">联系电话：021-12XXX678</th>
+  </tr>
+  <tr>
+    <th class="contact_th">联系人：陈花花</th>
+  </tr>
+  <tr>
+    <th class="contact_th">企业QQ：123XXX678</th>
+  </tr>
+
+</table>
+</div>
+{% endblock %}
+{% block custom_js %}
+
+{% endblock %}

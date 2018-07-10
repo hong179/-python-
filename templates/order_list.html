@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}hua_hua{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li class="active">在线预约</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="order_list">
+        <table border="0" class="order_t">
+            <tr>
+                <th class="order_th">预约时间</th>
+                <th class="order_th">预约人数</th>
+                <th class="order_th">景区名称</th>
+                <th class="order_th">联系人</th>
+                <th class="order_th">联系电话</th>
+                <th class="order_th">备注</th>
+                <th class="order_th">总价格</th>
+
+            </tr>
+            {% for ord in all_ord %}
+            <tr>
+                <td class="order_td">{{ord.otime}}</td>
+                <td class="order_td">{{ord.omemnum}}</td>
+                <td class="order_td">{{ord.sname}}</td>
+                <td class="order_td">{{ord.oname}}</td>
+                <td class="order_td">{{ord.ophone}}</td>
+                <td class="order_td">{{ord.oremark}}</td>
+                <td class="order_td">{{ord.totalprice}}</td>
+
+
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}
+{% block custom_js %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}hua_hua{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li><a href="{% url 'travel:scen_list'%}">旅游线路</a>> </li>
+                <li>景点详情</li>
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block content %}
+    <section>
+	<div class="wp">
+		<div class="groupPurchase_detail detail">
+			<div class="toppro">
+				<div class="left">
+					<div class="picbox">
+						<div class="tb-booth tb-pic">
+							<img width="440" height="445" src="{{ MEDIA_URL }}{{ scenic.spicture }}" class="jqzoom" />
+						</div>
+
+					</div>
+					<div class="des">
+						<h1 title="{{ scens.sname }}">{{ scenic.sname }}</h1>
+
+
+						<ul class="parameter">
+							<li><span class="pram word3">价格：￥</span><span>{{ scenic.sprice }}</span></li>
+							<li><span class="pram word3">所属地：</span><span>{{ scenic.pname }}</span></li>
+							<li><span class="pram word3">简介：</span><span>{{ scenic.sdesc }}</span></li>
+
+
+
+						</ul>
+
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

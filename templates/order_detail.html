@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}hua_hua{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li class="active">在线预约</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="ortxt" style="margin-bottom:40px">
+            请仔细填写好下方预约表格，我们的客服人员会在24小时内与您联系，<br>
+            谢谢您的支持与关注！
+        </div>
+        <form id="jsStayForm">
+            <div class="obody">
+                <div class="ortit">预约时间</div>
+                <input type="date" class="tstyle">
+            </div>
+            <div class="obody">
+                <div class="ortit">预约人数</div>
+                <input type="text" class="tstyle">
+            </div>
+            <div class="obody">
+                <div class="ortit">景区名称</div>
+                <input type="text" class="tstyle">
+            </div>
+            <div class="obody">
+                <div class="ortit">联系人</div>
+                <input type="text" class="tstyle" name="sname">
+            </div>
+            <div class="obody">
+                <div class="ortit">联系电话</div>
+                <input type="text" class="tstyle">
+            </div>
+
+            <div class="obody">
+                <div class="ortit">备注</div>
+                <input type="text" class="tstyle" style="height:100px;border:1px solid #ccc;">
+
+
+            </div>
+
+            <div class="obody">
+                <div class="ortit">总价格</div>
+                <input type="text" class="tstyle">
+            </div>
+            <button class="btn" id="jsStayBtn">提交</button>
+            {% csrf_token %}
+        </form>
+    </div>
+
+
+{% endblock %}
+{% block custom_js %}
+<script>
+    $(function () {
+        $('#jsStayBtn').on('click', function () {
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "{% url "travel:order/add" %}",
+                data: $('#jsStayForm').serialize(),
+                async: true,
+                success: function (data) {
+                    if (data.status == 'success') {
+                        $('#jsStayForm')[0].reset();
+                        alert("提交成功")
+                    } else if (data.status == 'fail') {
+                        $('#jsCompanyTips').html(data.msg)
+                    }
+                },
+            });
+        });
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#jsStayBtn').on('click', function () {
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "/travel/add_order/",
+                data: $('#jsStayForm').serialize(),
+                async: true,
+                success: function (data) {
+                    if (data.status == 'success') {
+                        $('#jsStayForm')[0].reset();
+                        alert("提交成功")
+                    } else if (data.status == 'fail') {
+                        $('#jsCompanyTips').html(data.msg)
+                    }
+                },
+            });
+        });
+    })
+</script>
+{% endblock %}

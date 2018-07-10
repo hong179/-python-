@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}hua_hua{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li class="active">旅游线路</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <section>
+        <div class="wp butler_list_box list">
+            <div>
+                <div class="listoptions">
+                    <ul>
+
+                        <li>
+                            <h2>所在地区</h2>
+                            <div class="more">更多</div>
+                            <div class="cont">
+                            <a href="?province={{ prov_id }}"><span
+                                    class="{% ifequal prov_id '' %}active2{% endifequal %}">全部</span></a>
+
+                                {% for province in all_prov %}
+                                    <a href="?province={{ province.id }}">
+                                        <span class="{% ifequal prov_id province.id|stringformat:"i" %}active2{% endifequal %}">{{ province.pname }}</span></a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="inWindow">
+                    <div class="tab_cont " id="content">
+                    <div class="group_list">
+                        {% for scens in all_scen.object_list %}
+                        <div class="box">
+                            <a href="{% url 'travel:scen_detail' scens.id %}">
+                                <img width="280" height="350" class="scrollLoading" src="{{MEDIA_URL}}{{scens.spicture}}" />
+                            </a>
+                            <div class="des">
+                                <a href="{% url 'travel:scen_detail' scens.id %}">
+                                    <h2>{{scens.sname}}</h2>
+                                </a>
+                                <span class="fl">价格：￥{{ scens.sprice }}&nbsp;&nbsp;</span>
+                                <a href="{% url 'travel:order_add'%}">
+                                    <span class="fr">预约</span>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="pageturn">
+                        <ul class="pagelist">
+                            {% if all_scen.has_previous %}
+                                <li class="long"><a href="?{{ all_scen.previous_page_number.querystring }}">上一页</a></li>
+                            {% endif %}
+
+                            {% for page in all_scen.pages %}
+                                {% if page %}
+                                    {% ifequal page all_scen.number %}
+                                        <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                                    {% else %}
+                                        <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                                    {% endifequal %}
+                                {% else %}
+                                    <li class="none"><a href="">...</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if all_scen.has_next %}
+                                <li class="long"><a href="?{{ all_scen.next_page_number.querystring }}">下一页</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}
